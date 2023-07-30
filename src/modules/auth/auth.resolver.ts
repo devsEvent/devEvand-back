@@ -9,6 +9,7 @@ import { BadRequestException, UseGuards } from '@nestjs/common';
 import { GqlAuthGuard } from './guard/gql-auth.guard';
 import { GetCurrentUser } from 'src/common/get-current-user-id.decorator';
 import { User } from '../users/entities/user.entity';
+import { Request } from 'express';
 
 @Resolver(() => Auth)
 export class AuthResolver {
@@ -27,12 +28,17 @@ export class AuthResolver {
   }
 
   @Mutation(() => CheckCodeResult)
-  checkCode(@Args('body') body: CheckCode, @GetCurrentUser() user) {
+  checkCode(
+    @Args('body') body: CheckCode,
+    @GetCurrentUser() user,
+    @Context('req') req: Request,
+  ) {
     if (user) return new BadRequestException('شما وارد سایت شده اید');
     return this.authService.checkLoginCode(
       body.code,
       body.phoneNumber,
       body.rememberMe,
+      req,
     );
   }
 

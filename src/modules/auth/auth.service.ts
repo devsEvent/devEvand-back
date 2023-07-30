@@ -9,6 +9,7 @@ import { UsersService } from '../users/users.service';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { OtpService } from '../otp/otp.service';
+import { Request } from 'express';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '../users/entities/user.entity';
 
@@ -67,7 +68,12 @@ export class AuthService {
     }
   }
 
-  async checkLoginCode(code: string, phoneNumber: string, rememberMe: boolean) {
+  async checkLoginCode(
+    code: string,
+    phoneNumber: string,
+    rememberMe: boolean,
+    req: Request,
+  ) {
     try {
       const user = await this.prisma.user.findUnique({
         where: { phoneNumber },
@@ -85,6 +91,7 @@ export class AuthService {
         where: { id: user.id },
         data: { codeExpire: '', code: '', refToken: token.refresh_token },
       });
+      await req.res.cookie('refToken', token.refresh_token, { httpOnly: true });
       return {
         accessToken: token.access_token,
         user: payload,

@@ -17,11 +17,6 @@ import { PrismaService } from 'src/prisma/prisma.service';
     OtpService,
     PrismaService,
   ],
-  imports: [
-    JwtModule.register({
-      secret: process.env.ACCESS_TOKEN_SECRET,
-      signOptions: { expiresIn: '1d' },
-    }),
-  ],
+  imports: [JwtModule],
 })
 export class AuthModule {}
