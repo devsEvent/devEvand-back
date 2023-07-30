@@ -1,0 +1,60 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: Int!
+  phoneNumber: String!
+  email: String!
+}
+
+type LoginResult {
+  message: String!
+  phoneNumber: String!
+}
+
+type CheckCodeResult {
+  accessToken: String!
+  user: User!
+}
+
+type Query {
+  users: [User!]!
+  auth: User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: Int!): User!
+  register(body: RegisterInput!): LoginResult!
+  login(phoneNumber: String!): LoginResult!
+  checkCode(body: CheckCode!): CheckCodeResult!
+}
+
+input CreateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateUserInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input RegisterInput {
+  """phone number"""
+  phoneNumber: String!
+
+  """user fullname"""
+  fullName: String!
+
+  """user email"""
+  email: String!
+}
+
+input CheckCode {
+  code: String!
+  phoneNumber: String!
+}
