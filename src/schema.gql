@@ -8,6 +8,11 @@ type User {
   email: String!
 }
 
+type Auth {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type LoginResult {
   message: String!
   phoneNumber: String!
@@ -20,6 +25,7 @@ type CheckCodeResult {
 
 type Query {
   users: [User!]!
+  refreshToken: Auth!
   auth: User!
 }
 
@@ -57,4 +63,5 @@ input RegisterInput {
 input CheckCode {
   code: String!
   phoneNumber: String!
+  rememberMe: Boolean!
 }
