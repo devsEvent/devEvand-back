@@ -20,16 +20,39 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/jwt": "^10.1.0",
     "@nestjs/platform-express": "^10.0.0",
     "@prisma/client": "^5.0.0",
+=======
+    "@apollo/server": "^4.9.0",
+    "@nestjs/apollo": "^12.0.7",
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/graphql": "^12.0.8",
+    "@nestjs/jwt": "^10.1.0",
+    "@nestjs/passport": "^10.0.0",
+    "@nestjs/platform-express": "^10.0.0",
+    "@prisma/client": "^5.0.0",
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
+    "class": "^0.1.4",
+    "class-validator": "^0.14.0",
+    "cookie-parser": "^1.4.6",
+    "graphql": "^16.7.1",
+>>>>>>> 771f61a3592669018d08c9a677197b198402399b
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "prisma": "^5.0.0",
     "reflect-metadata": "^0.1.13",
+<<<<<<< HEAD
     "rxjs": "^7.8.1"
+=======
+    "rxjs": "^7.8.1",
+    "transformer": "^1.2.8"
+>>>>>>> 771f61a3592669018d08c9a677197b198402399b
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

@@ -18,7 +18,12 @@ model User {
   verifyEmail       Boolean @default(false)
   veryfyPhoneNumber Boolean @default(false)
   code              String?
+<<<<<<< HEAD
   codeExprire       Int?
+=======
+  codeExpire        String?
+  refToken          String?
+>>>>>>> 771f61a3592669018d08c9a677197b198402399b
   role              Role    @default(USER)
 }
 
